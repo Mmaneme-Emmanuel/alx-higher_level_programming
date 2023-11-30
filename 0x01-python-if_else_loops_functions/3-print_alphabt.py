@@ -1,4 +1,4 @@
 #!/usr/bin/python3
-for chr in range(97, 123):
-    if chr not in ['e', 'q']:
-        print(f'{chr}',end=" ")
+for i in range(ord('a'), ord('z') + 1):
+    if chr (i) != 'q' and chr(i) != 'e':
+        print("{}".format(chr(i)), end=" ")
