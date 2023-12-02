@@ -3,4 +3,4 @@ from add_0 import add
 a = 1
 b = 2
 addition = add(a, b)
-print(addition)
+print(f"1 + 2 = {addition}", end=' ')
