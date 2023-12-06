@@ -1,21 +1,22 @@
 #include "lists.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <stddef.h>
 
 /**
 *add_nodeint - adds a new node at the beginning of a listint_t list
 *@head: head of listint_t
-*@nw: int to add in listint_t list
+*@n: int to add in listint_t list
 *Return: address of the new element, or NULL if it failed
 */
-listint_t *add_nodeint(listint_t **head, const int nw)
+listint_t *add_nodeint(listint_t **head, const int n)
 {
 	listint_t *new;
 
 	new = malloc(sizeof(listint_t));
 	if (new == NULL)
 		return (NULL);
-	new->nw = nw;
+	new->n = n;
 	new->next = *head;
 	*head = new;
 	return (new);
@@ -34,13 +35,13 @@ int is_palindrome(listint_t **head)
 		return (1);
 	while (head2 != NULL)
 	{
-		add_nodeint(&aux, head2->nw);
+		add_nodeint(&aux, head2->n);
 		head2 = head2->next;
 	}
 	aux2 = aux;
 	while (*head != NULL)
 	{
-		if ((*head)->nw != aux2->nw)
+		if ((*head)->n != aux2->n)
 		{
 			free_listint(aux);
 			return (0);
