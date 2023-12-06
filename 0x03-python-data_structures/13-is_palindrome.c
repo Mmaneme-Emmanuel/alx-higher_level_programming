@@ -10,50 +10,44 @@
  */
 int is_palindrome(listint_t **head)
 {
-    listint_t *slow = *head, *fast = *head;
-    listint_t *prev_slow = NULL, *mid_node = NULL;
-    int result = 1;
+listint_t *slow = *head, *fast = *head;
+listint_t *prev_slow = NULL, *mid_node = NULL;
+int result = 1;
 
-    if (*head == NULL || (*head)->next == NULL)
-        return (1);
+if (*head == NULL || (*head)->next == NULL)
+	return (1);
 
-    // Find the middle of the list
-    while (fast != NULL && fast->next != NULL)
-    {
-        fast = fast->next->next;
-        prev_slow = slow;
-        slow = slow->next;
-    }
+while (fast != NULL && fast->next != NULL)
+{
+	fast = fast->next->next;
+	prev_slow = slow;
+	slow = slow->next;
+}
 
-    // If the number of elements is odd, skip the middle node
-    if (fast != NULL)
-    {
-        mid_node = slow;
-        slow = slow->next;
-    }
+if (fast != NULL)
+{
+	mid_node = slow;
+	slow = slow->next;
+}
 
-    // Reverse the second half of the list
-    prev_slow->next = NULL;
-    reverse_list(&slow);
+prev_slow->next = NULL;
+reverse_list(&slow);
 
-    // Compare the two halves of the list
-    result = compare_lists(*head, slow);
+result = compare_lists(*head, slow);
 
-    // Restore the original list
-    reverse_list(&slow);
+reverse_list(&slow);
 
-    // If the number of elements is odd, reconnect the middle node
-    if (mid_node != NULL)
-    {
-        prev_slow->next = mid_node;
-        mid_node->next = slow;
-    }
-    else
-    {
-        prev_slow->next = slow;
-    }
+if (mid_node != NULL)
+{
+	prev_slow->next = mid_node;
+	mid_node->next = slow;
+}
+else
+{
+	prev_slow->next = slow;
+}
 
-    return result;
+return (result);
 }
 
 /**
@@ -62,19 +56,19 @@ int is_palindrome(listint_t **head)
  */
 void reverse_list(listint_t **head)
 {
-    listint_t *prev = NULL;
-    listint_t *current = *head;
-    listint_t *next = NULL;
+	listint_t *prev = NULL;
+	listint_t *current = *head;
+	listint_t *next = NULL;
 
-    while (current != NULL)
-    {
-        next = current->next;
-        current->next = prev;
-        prev = current;
-        current = next;
-    }
+	while (current != NULL)
+	{
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
+	}
 
-    *head = prev;
+	*head = prev;
 }
 
 /**
@@ -85,14 +79,12 @@ void reverse_list(listint_t **head)
  */
 int compare_lists(listint_t *head1, listint_t *head2)
 {
-    while (head1 != NULL && head2 != NULL)
-    {
-        if (head1->n != head2->n)
-            return 0;
-
-        head1 = head1->next;
-        head2 = head2->next;
-    }
-
-    return (head1 == NULL && head2 == NULL);
+	while (head1 != NULL && head2 != NULL)
+	{
+		if (head1->n != head2->n)
+			return (0);
+		head1 = head1->next;
+		head2 = head2->next;
+	}
+	return (head1 == NULL && head2 == NULL);
 }
