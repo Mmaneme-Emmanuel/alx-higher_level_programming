@@ -1,13 +1,7 @@
 #!/usr/bin/python3
+"""A module for square"""
+
+
 class Square:
-
-    """
-    A class that defines a square.
-
-    Attributes:
-        None
-
-    Methods:
-        None
-    """
+    """Represent a square."""
     pass
