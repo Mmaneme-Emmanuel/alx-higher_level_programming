@@ -1,4 +1,4 @@
-#!/usr/bin/pyeython3
+#!/usr/bin/python3
 """Defining a rectangle."""
 
 
