@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defining a BaseGeometry function"""
+"""Defining a geometry function"""
 
 
 class BaseGeometry:
@@ -15,7 +15,7 @@ class BaseGeometry:
             name(str) name of parameter
             value(int) the parameter to validate
         Raise:
-            TypeError:if value is not an integer
+            TypeError: if value is not an integer
             ValueError: if value is <= 0.
         """
         if not isinstance(value, int):
