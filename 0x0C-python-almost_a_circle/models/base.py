@@ -23,7 +23,7 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        """returns the JSON string representation of list_dic.
+        """returns the JSON string representation of list_dictionaries.
 
         Args:
             list_dictionaries (list): a list of dictionaries.
@@ -39,20 +39,27 @@ class Base:
         if list_objs is None:
             file_json = "[]"
         else:
-			file_json = cls.to_json_string([obj.to_dictionary() for obj in list_objs])
-			filename = cls.__name__ + ".json"
-			with open(filename, 'w') as file:
-				file.writefile_json)
+            file_json = cls.to_json_string([obj.to_dictionary() for obj in list_objs])
+            filename = cls.__name__ + ".json"
+            with open(filename, 'w') as file:
+                file.write(file_json)
 
     @staticmethod
-    """Update the class Base by adding the static method"""
     def from_json_string(json_string):
-        If json_string is None or 
-        json_string == "[]":
+        """Update the class Base by adding the static method."""
+        if json_string is None or json_string == "[]":
             return []
         else:
-        return json_loads(json_string)
+            return json.loads(json_string)
 
     @classmethod
-    """Update the class Base by adding the class method"""
     def create(cls, **dictionary):
+        """Update the class Base by adding the class method."""
+        instance = cls.__new__(cls)
+        if cls.__name__ == "Rectangle":
+            instance.width = 0
+            instance.height = 0
+        elif cls.__name__ == "Square":
+            instance.size = 0
+        instance.update(**dictionary)
+        return instance
