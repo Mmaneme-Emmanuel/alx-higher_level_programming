@@ -12,9 +12,9 @@ if __name__ == "__main__":
     sql_query = "SELECT * FROM cities ORDER BY id ASC"
     cur.execute(sql_query)
 
-    rows = cur.fetchall
-    for row in rows
-    print(row)
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)
 
     cur.close()
     db.close()
