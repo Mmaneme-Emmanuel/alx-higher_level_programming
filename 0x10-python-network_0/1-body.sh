@@ -1,2 +1,3 @@
 #!/bin/bash
-curl -sL "$1" | grep -i 'HTTP/1.1 200 OK' -A 100 | sed -n '/^\s*$/,$p'
+#takes in a URL, sends a GET request to the URL, and displays the response
+curl -Ls "$1"
