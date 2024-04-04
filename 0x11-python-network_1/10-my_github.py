@@ -5,9 +5,13 @@ import requests
 
 if __name__ == "__main__":
     username = sys.argv[1]
-    password = sys.argv[2]
+    token = sys.argv[2]
 
-    auth = (username, password)
-
+    auth = (username, token)
     response = requests.get("https://api.github.com/user", auth=auth)
-    print(response.json().get("id"))
+
+    if response.status_code == 200:
+        print(response.json().get("id"))
+    else:
+        print("Failed to retrieve user information. Status code:",
+              response.status_code)
